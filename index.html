@@ -1,1 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>陈乔云 · 个人主页</title>
+<meta name="description" content="陈乔云的个人主页 —— 税务专业，热爱生活热爱学习，正在探索人工智能。">
 
+<script>
+  // 尽早确定主题，避免刷新时闪白
+  (function () {
+    var stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
+    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+
+<style>
+  :root {
+    --bg: #fbfbfa;
+    --surface: #ffffff;
+    --border: #e7e7e2;
+    --text: #17171b;
+    --muted: #6a6a74;
+    --accent: #5b5bd6;
+    --accent-soft: #efeffc;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(20, 20, 30, .04), 0 10px 30px -16px rgba(20, 20, 30, .18);
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0e0e12;
+    --surface: #17171d;
+    --border: #2a2a33;
+    --text: #ececf1;
+    --muted: #9a9aa6;
+    --accent: #a5a5ff;
+    --accent-soft: #1e1e2e;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 10px 30px -16px rgba(0, 0, 0, .8);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: clamp(24px, 6vw, 72px) clamp(18px, 5vw, 32px);
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 720px; margin: 0 auto; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus {
+    position: static; display: inline-block; margin-bottom: 16px;
+    padding: 8px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  }
+
+  /* ── 头部 ───────────────────────────── */
+  header.hero {
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .avatar {
+    flex: none;
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 34px; font-weight: 600;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+  .hero-text { flex: 1 1 260px; min-width: 0; }
+  h1 {
+    margin: 0 0 4px;
+    font-size: clamp(26px, 5vw, 34px);
+    line-height: 1.25;
+    letter-spacing: -.01em;
+  }
+  .tagline { margin: 0; color: var(--muted); }
+
+  .links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a {
+    padding: 4px 12px;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color .15s, color .15s;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  /* ── 内容区 ─────────────────────────── */
+  main { padding-top: 8px; }
+  section { margin-top: 40px; }
+  h2 {
+    margin: 0 0 14px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  p { margin: 0 0 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .chips li {
+    padding: 4px 12px;
+    font-size: 14px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    margin: 0; padding: 0; list-style: none;
+  }
+  .card {
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: transform .15s, border-color .15s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .card h3 { margin: 0 0 6px; font-size: 16px; }
+  .card p { margin: 0; font-size: 14px; color: var(--muted); }
+  .card .meta { margin-top: 10px; font-size: 13px; }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  #theme-toggle {
+    font: inherit;
+    font-size: 13px;
+    padding: 4px 12px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  #theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 480px) {
+    header.hero { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<div class="page">
+
+  <header class="hero">
+    <!-- 换成照片：把下面这行替换为 <img src="avatar.jpg" alt="陈乔云">，图片放同目录即可 -->
+    <div class="avatar" aria-hidden="true">陈</div>
+
+    <div class="hero-text">
+      <h1>陈乔云</h1>
+      <p class="tagline">热爱生活，热爱学习，正在探索人工智能。</p>
+
+      <nav class="links" aria-label="联系方式">
+        <a href="mailto:chenqiaoyun@example.com">邮箱</a>
+        <a href="https://github.com/Cici-yy021">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section aria-labelledby="about">
+      <h2 id="about">关于我</h2>
+      <p>我的专业是税务，日常和税法、政策与财务数据打交道，习惯先把规则梳理清楚再动手。</p>
+      <p>我对人工智能很感兴趣，正在系统地学习相关知识，也尝试把 AI 工具用到税务和数据处理的实际问题里。</p>
+      <p>工作之外，我热爱生活，也热爱学习。</p>
+    </section>
+
+    <section aria-labelledby="skills">
+      <h2 id="skills">技能</h2>
+      <!-- TODO: 按你的真实情况增删，别把不熟的写上去 -->
+      <ul class="chips">
+        <li>税务</li>
+        <li>税法</li>
+        <li>企业所得税</li>
+        <li>增值税</li>
+        <li>财务分析</li>
+        <li>Excel</li>
+        <li>Python（学习中）</li>
+        <li>机器学习（学习中）</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="doing">
+      <h2 id="doing">最近在做</h2>
+      <!-- TODO: 这三张卡是我根据你给的信息起的草稿，发布前请改成你真实在做的事 -->
+      <ul class="cards">
+        <li class="card">
+          <h3>学习人工智能</h3>
+          <p>补齐基础概念，并动手做一些小练习。</p>
+        </li>
+        <li class="card">
+          <h3>税务 × AI</h3>
+          <p>试着用 AI 工具处理税务数据、整理政策要点。</p>
+        </li>
+        <li class="card">
+          <h3>记录与分享</h3>
+          <p>把学习过程中的笔记整理出来。</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="contact">
+      <h2 id="contact">联系</h2>
+      <p>最方便的方式是邮件：<a href="mailto:chenqiaoyun@example.com">chenqiaoyun@example.com</a>，我通常一两天内回复。</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>© <span id="year">2026</span> 陈乔云</span>
+    <button id="theme-toggle" type="button">切换主题</button>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var toggle = document.getElementById('theme-toggle');
+  function syncLabel() {
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    toggle.textContent = dark ? '☀ 浅色' : '☾ 深色';
+    toggle.setAttribute('aria-label', dark ? '切换到浅色主题' : '切换到深色主题');
+  }
+  toggle.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    syncLabel();
+  });
+  syncLabel();
+</script>
+</body>
+</html>
